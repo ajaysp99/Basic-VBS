@@ -1,0 +1,6 @@
+Option Explicit
+Sub test()
+    Dim wsh
+    Set wsh = CreateObject("wscript.shell")
+    wsh.Run "cmd.exe /C taskkill /f /im wscript.exe"
+End Sub
