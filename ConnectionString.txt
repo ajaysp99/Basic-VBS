@@ -1,0 +1,24 @@
+
+
+********************************
+Oracle Connection String - 
+********************************
+
+
+
+Set conn = CreateObject("ADODB.Connection")
+
+conn.ConnectionString = "Driver={Microsoft ODBC for Oracle}; " & _
+                                    "CONNECTSTRING=(DESCRIPTION=" & _
+                                    "(ADDRESS=(PROTOCOL=TCP)(HOST=" & {__strHost__} & ")(PORT={___}))" & _
+                                    "(CONNECT_DATA=(SERVICE_NAME=" & {__strDatabase_} & "))); uid=" & {__strUser__} & " ;pwd=" & {__strPassword__} & ";"
+**Remove { }, __
+
+
+********************************
+SQL Connection String -
+********************************
+
+
+strConnect = "Provider=SQLNCLI11;Data Source={__DataSource__} ;Initial Catalog={__DataBase__};Integrated Security=SSPI
+
