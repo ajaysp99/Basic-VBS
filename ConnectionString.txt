@@ -13,8 +13,21 @@ conn.ConnectionString = "Driver={Microsoft ODBC for Oracle}; " & _
                                     "(ADDRESS=(PROTOCOL=TCP)(HOST=" & {__strHost__} & ")(PORT={___}))" & _
                                     "(CONNECT_DATA=(SERVICE_NAME=" & {__strDatabase_} & "))); uid=" & {__strUser__} & " ;pwd=" & {__strPassword__} & ";"
 **Remove { }, __
+conn.CommandTimeout = 100000
+conn.Open
+Set rs = CreateObject("ADODB.Recordset")
+rs.Open query, conn
 
+If Not rs.EOF Then
+    rs.MoveFirst
+    do
+      {__Get data__}
+      If rs.EOF Then Exit Do
+    loop
+end if
 
+rs.Close
+Set rs = Nothing
 ********************************
 SQL Connection String -
 ********************************
@@ -22,3 +35,15 @@ SQL Connection String -
 
 strConnect = "Provider=SQLNCLI11;Data Source={__DataSource__} ;Initial Catalog={__DataBase__};Integrated Security=SSPI
 
+rs.Open query, strConnect
+
+If Not rs.EOF Then
+    rs.MoveFirst
+    do
+      {__Get data__}
+      If rs.EOF Then Exit Do
+    loop
+end if
+
+rs.Close
+Set rs = Nothing
